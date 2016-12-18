@@ -1,0 +1,50 @@
+table{
+  table-layout: fixed;
+}
+
+td{
+  padding: 3px;
+}
+
+.first{
+  width: 50%;
+}
+
+.second{
+    padding-left:3px;
+  width: 20%;
+}
+
+.third{
+    padding-left:3px;
+    padding-right:3px;
+  width: 15%;
+}
+
+.helper{
+  padding: 3px;
+  color: blue;
+  font-size: 12px;
+}
+
+.revealActive {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+
+input[type="checkbox"]:checked ~ .revealActive {
+  opacity: 1;
+  max-height: 100px;
+  overflow: visible;
+}
+
+#qualificationSelection{
+    display: inline;
+    position: absolute;
+}
+
+#qualificationRecognition{
+    display: none;
+    position: absolute;
+}

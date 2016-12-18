@@ -1,0 +1,137 @@
+/****
+General Details CSS
+*****/
+#generalDetails{
+    display: inline;
+    position: absolute;
+}
+
+
+/****
+Ethnicity CSS
+*****/
+#ethnicity{
+    display: none;
+    position: absolute;
+}
+
+label{
+    font-weight: normal;
+}
+
+.columns{
+    float: left;
+    padding-right: 70px;
+}
+
+#other{
+    margin-top:10px;
+    margin-left:-15px;
+    width: 250px;
+}
+
+#columnContainer{
+    height: auto;
+    overflow: hidden;
+}
+
+#Iwicontainer{
+    padding-top: 20px;
+}
+
+#iwiDiv{
+    padding-left: 0px;
+}
+
+#iwiText{
+    padding-left:2px;
+}
+
+
+/****
+Previous Employment CSS
+****/
+#prevEmployment{
+    display: none;
+    position: absolute;
+}
+
+
+/****
+Contact Details CSS
+*****/
+#contactDetails{
+    display: none;
+    position: absolute;
+}
+
+
+/****
+Employer Information CSS
+*****/
+#employerInfo{
+    display: none;
+    position: absolute;
+}
+
+
+/****
+Education CSS
+*****/
+#education{
+    display: none;
+    position: absolute;
+}
+
+
+/****
+Identity CSS
+*****/
+#identity{
+    display: none;
+    position: absolute;
+}
+
+
+/****
+Terms CSS
+*****/
+#terms{
+    display: none;
+    position: absolute;
+}
+
+.termsTitle{
+    font-weight: bold;
+}
+
+tr{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
+
+
+/****
+Learning Skills CSS
+*****/
+#learningSkills{
+    display: none;
+    position: absolute;
+}
+
+
+/****
+Other CSS
+*****/
+
+#title{
+    margin-top: 25px;
+}
+
+a{
+    cursor: pointer;
+}
+
+select.form-control{
+    width: fit-content
+}
