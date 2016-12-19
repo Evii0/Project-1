@@ -8,10 +8,16 @@
     width: 135px;
 }
 
-#loginContainer{
-    width: 270px;
+#outer{
     margin: auto;
+    width: 25%;
+    padding-top: 150px;
+}
+
+#loginContainer{
+    width: 25%;
     display: inline;
+    margin: auto;
 }
 
 #loginButton{
@@ -21,6 +27,7 @@
 
 .link{
     font-size:12px;
+    cursor: pointer;
 }
 
 #forgot{
@@ -32,8 +39,7 @@
 }
 
 #createContainer{
-    width: 400px;
-    margin: auto;
+    width: 30%;
     display: none;
 }
 
