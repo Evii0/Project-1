@@ -47,7 +47,7 @@ Makes sure given year is smaller or equal to current year
 Returns bool
 */
 function validateYear(year){
-    if(year > new Date().getFullYear()) return false;
+    if(year >= new Date().getFullYear()) return false;
     else return true;
 }
 

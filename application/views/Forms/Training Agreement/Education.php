@@ -30,14 +30,14 @@
                             <div class="form-group <?php if (isset($lastYearAtSchoolError)) print "has-error"; ?>">
                                 <label for="lastYearAtSchool" class="col-lg-2 control-label">Last year at school*</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" name="lastYearAtSchool" placeholder="Year" value="<?php if(isset($lastYearAtSchool)) {print $lastYearAtSchool;} ?>" />
+                                    <input type="text" class="form-control" name="lastYearAtSchool" placeholder="Year" id="lastSchoolYear" />
                                 </div>
                             </div>
 
                             <div class="form-group <?php if (isset($mainLanguageError)) print "has-error"; ?>">
                                 <label for="mainLanguage" class="col-lg-2 control-label">Main language*</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" name="mainLanguage" placeholder="Language" value="<?php if(isset($mainLanguage)) {print $mainLanguage;} ?>" />
+                                    <input type="text" class="form-control" name="mainLanguage" placeholder="Language" />
                                 </div>
                             </div>
 
@@ -80,26 +80,24 @@
                             <div class="form-group <?php if (isset($qualificationLevelError)) print "has-error"; ?>">
                                 <label for="qualificationLevel" class="col-lg-2 control-label">Qualification level</label>
                                 <div class="col-lg-10">
-                                    <select class="form-control" name="qualificationLevel" id="qualificationLevel" <?php if(!isset($HighestTertiaryQual) || ($HighestTertiaryQual != "Certificate" && $HighestTertiaryQual !="Diploma")) print 'disabled="true"'; ?>>
-                                    <?php
-                                    $levels = array("", "1","2","3","4","5","6");
-                                    $arrayLength = count($levels);
-                                    for($x = 0; $x < $arrayLength; $x++) {
-                                    print '<option value="'.$levels[$x].'" ';
-                                    if(isset($qualificationLevel) && $qualificationLevel == $levels[$x]) print 'selected="selected"';
-                                    print '>'.$levels[$x].'</option>';
-                                    }
-                                    ?>
+                                    <select class="form-control" name="qualificationLevel" id="qualificationLevel">
+                                        <option></option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
                                     </select>
                                 </div>
                             </div>
                             <script type="text/javascript">
                                 function HighestTertiaryQualChanged() {
-                                document.getElementById("qualificationLevel").disabled = true;
-                                var value = document.getElementById("HighestTertiaryQual").value;
-                                if(value === "Certificate" || value === "Diploma") {
-                                document.getElementById("qualificationLevel").disabled = false;
-                                }
+                                    document.getElementById("qualificationLevel").disabled = true;
+                                    var value = document.getElementById("HighestTertiaryQual").value;
+                                    if(value === "Certificate" || value === "Diploma") {
+                                        document.getElementById("qualificationLevel").disabled = false;
+                                    }
                                 }
                             </script>
 
@@ -107,12 +105,12 @@
                             <div class="form-group <?php if (isset($firstYearAtTertiaryError)) print "has-error"; ?>">
                                 <label for="firstYearAtTertiary" class="col-lg-2 control-label">First year at tertiary</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" name="firstYearAtTertiary" placeholder="YYYY" value="<?php if(isset($tradingAs)) {print $tradingAs;} ?>" />
+                                    <input type="text" class="form-control" name="firstYearAtTertiary" placeholder="YYYY" id="tertiaryYear" />
                                 </div>
                             </div>
                             <hr />
 
-                            <div class="form-group <?php if (isset($previousEmploymentError)) print "has-error"; ?>">
+                            <div class="form-group">
                                 <p class="help-block col-lg-offset-2 col-lg-10">Please select your occupation or activity before you started with your employer</p>
                                 <label for="previousEmployment" class="col-lg-2 control-label">Prior activity</label>
                                 <div class="col-lg-10">

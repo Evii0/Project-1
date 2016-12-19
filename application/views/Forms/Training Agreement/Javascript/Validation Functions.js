@@ -4,6 +4,7 @@ function displayError(incorrectField){
 
 function addToDatabase(table, fields, data){
     //Needs to be done using php (ie server side) so this should just pass the stuff off the controller somehow
+    "INSERT INTO " + table + "(" + fields + ") VALUES (" + encodeURIComponent(data) + ");";
 }
 
 function generalDetails(){
@@ -35,7 +36,7 @@ function contactDetails(){
     if(valid){
         addToDatabase();
         nextSection('ethnicity');
-        updateProgressBar();
+        //updateProgressBar();
     }
 }
 
@@ -54,7 +55,7 @@ function ethnicity(){
             ethnicities += checkBoxes[i].name + ";";
         }
     }
-    if(!validateNumberOfSelections(ethnicities.substring(0, ethnicities.length-2), 1, 3)) {valid = false; displayError('TooManySelected.ethnicity.1.3')}
+    if(!validateNumberOfSelections(ethnicities, 1, 3)) {valid = false; displayError('TooManySelected.ethnicity.1.3')}
     
     //NZ Maori ticked and neither 'don't know' or 'don't identify' ticked
     if(NZMaori.selected && !(dontKnow.checked || dontIdentify.checked)){
@@ -73,8 +74,8 @@ function education(){
     
     var valid = true;
     
-    if(!ValidateYear(schoolYear.value)) { valid = false; displayError('lastSchoolYear'); }
-    if(!ValidateYear(tertiaryYearYear.value)) { valid = false; displayError('tertiaryYear'); }
+    if(!validateYear(schoolYear.value)) { valid = false; displayError('lastSchoolYear'); }
+    if(!validateYear(tertiaryYear.value)) { valid = false; displayError('tertiaryYear'); }
     
     
     if(valid){
@@ -107,6 +108,8 @@ function employerInfo(){
     
 function identity(){
     var date = document.getElementById('passportExpiry');
+    var passportNumber = document.getElementById('passportNumber');
+    var birthCertNumber = document.getElementById('birthCertNum');
     
     var valid = true;
     

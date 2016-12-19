@@ -20,7 +20,7 @@
                         <div class="form-group <?php if(isset($passportExpiryError)) print "has-error"; ?>">
                             <label for="passportExpiry" class="col-lg-2 control-label">Passport expiry</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" name="passportExpiry" placeholder="dd/mm/yyyy" value="<?php if(isset($passportExpiry)) {print $passportExpiry;} ?>" />
+                                <input type="text" class="form-control" name="passportExpiry" placeholder="dd/mm/yyyy" id="passportExpiry" />
                             </div>
                         </div>
                         <p class="help-block col-lg-offset-2 col-lg-10">Your passport must not be expired by more than 2 years. If it is please use another identification method</p>
@@ -53,19 +53,16 @@
                 </div>
                 <div class="panel-body">
                     <form class="form-horizontal" action="form.php?form=ProofIdentity" method="post" enctype="multipart/form-data">
-                        <div class="form-group <?php if (isset($idMethodError)) print "has-error"; ?>">
-                            <label for="idMethod" class="help-block col-lg-offset-2 col-lg-10">Select an identification method</label>
+                        <div class="form-group <?php if (isset($idMethodError)) print "has-error"; ?>">   
                             <p class="help-block col-lg-offset-2 col-lg-10">You will be required to upload a digital copy of these documents which must already be verified prior to being uploaded.</p>
+                            <p class="help-block col-lg-offset-2 col-lg-10">A verified document is a photocopy signed as a true and accurate copy of the original. This can be verified by a Justice of the Peace, NZ Police, Skills staff member or a Skills authorised verifier only.</p>
+                            <label for="idMethod" class="help-block col-lg-offset-2 col-lg-10">Select an identification method</label>
                             <div class="col-lg-offset-2 col-lg-10">
                                 <select class="form-control" name="idMethod" id="idMethod" onchange="inputChanged()">
-                                <?php
-                                    $arrayLength = count($idOptions);
-                                    for($x = $arrayLength-1; $x >= 0; $x--) {
-                                    print '<option value="'.$idOptions[$x].'" ';
-                                    if($idMethod == $idOptions[$x]) print 'selected="selected"';
-                                    print '>'.$idOptions[$x].'</option>';
-                                    }
-                                    ?>
+                                    <option>Overseas passport AND permanent residency or working visa</option>
+                                    <option>Overseas birth certificate AND photo ID AND permanent residency or working visa</option>
+                                    <option>NZ citizenship certificate AND photo ID</option>
+                                    <option>New Zealand birth certificate (issued before 1998) AND photo ID</option>
                                 </select>
                             </div>
                         </div>
@@ -120,7 +117,6 @@
                                 print '<p class="col-lg-7"></p>';
                                 ?>
                         </div>
-                        <p class="help-block col-lg-offset-2 col-lg-10">A verified document is a photocopy signed as a true and accurate copy of the original. This can be verified by a Justice of the Peace, NZ Police, Skills staff member or a Skills authorised verifier only.</p>
                         <p class="col-lg-offset-2 col-lg-10 text-primary">These are valid forms of photo ID: Drivers License, 18+ Card, or NZ Student ID</p>
                         <?php if(isset($formError)) { ?>
                         <div class="alert alert-warning col-lg-offset-2 col-lg-10">
