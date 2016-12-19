@@ -15,7 +15,7 @@
 }
 
 #loginContainer{
-    width: 25%;
+    width: 300px;
     display: inline;
     margin: auto;
 }
@@ -39,7 +39,7 @@
 }
 
 #createContainer{
-    width: 30%;
+    width: 300px;
     display: none;
 }
 

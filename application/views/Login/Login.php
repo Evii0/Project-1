@@ -60,7 +60,7 @@
                                             <input type="password" name="pass2" placeholder="Confirm Password" class="form-control" id="pass2">
                                         </div>
                                         <input type="hidden" name="formControl" value="signup" />
-                                        <button class="btn btn-default" type="submit">Create Account</button>
+                                        <button class="btn btn-default" type="button" onclick="createAccount()">Create Account</button>
                                     </form>
                                 </div>
                             </div>  
@@ -76,11 +76,11 @@
                                     <form action="" method="POST">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                            <input type="text" name="email" placeholder="Email Address" class="form-control" />
+                                            <input type="text" id="email" placeholder="Email Address" class="form-control" />
                                         </div>
                                         <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                                            <input type="password" name="pass" placeholder="Password" class="form-control">
+                                            <input type="password" id="pass" placeholder="Password" class="form-control">
                                         </div>
 
                                         <input type="hidden" name="formControl" value="login" />
@@ -88,7 +88,7 @@
                                             <a onclick="showCreate()" class="link" id="create">Create Account</a>
                                             <a href="passwordReset.php" class="link" id="forgot">Forgot Password</a>
                                         </div>
-                                        <button class="btn btn-default" type="submit" id="loginButton">Login</button>
+                                        <button class="btn btn-default" type="button" onclick="login()" id="loginButton">Login</button>
                                     </form>
                                 </div>
                             </div>
