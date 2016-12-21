@@ -2,32 +2,31 @@
     <h1 class="page-header">Employer Information</h1>
     <div class="contentContainer">
         <form class="form-horizontal" action="form.php?form=EmployerInformation" method="post">
-				  <div class="form-group <?php if (isset($companyNameError)) print "has-error"; ?>">
+				  <div class="form-group">
 					<label for="companyName" class="col-lg-2 control-label">Company name*</label>
 					<div class="col-lg-10">
-					  <input type="text" class="form-control" name="companyName" placeholder="Company name" />
+					  <input type="text" class="form-control" name="companyName" placeholder="Company name" id="companyName" />
 					</div>
 				  </div>
 				  <div class="form-group">
 					<label for="tradingAs" class="col-lg-2 control-label">Trading as</label>
 					<div class="col-lg-10">
-					  <input type="text" class="form-control" name="tradingAs" placeholder="Trading as" />
+					  <input type="text" class="form-control" id="tradingAs" placeholder="Trading as" />
 					</div>
 				  </div>
 				  <div class="form-group">
 					<label for="postalAddress" class="col-lg-2 control-label">Postal address*</label>
 					<div class="col-lg-10">
-					  <input type="text" class="form-control" name="postalAddress" id="postalAddress" placeholder="Postal address" />
+					  <input type="text" class="form-control" id="postalAddress" id="postalAddress" placeholder="Postal address" />
 					</div>
 				  </div>
-				  
-				  
-				  
+  
 				  <script type="text/javascript">
 				  function copyAddress() {
 					  document.getElementById("streetAddress").value = document.getElementById("postalAddress").value;
 				  }
 				  </script>
+            
 				  <p class="help-block col-lg-offset-2 col-lg-10"><a href="#" id="copyAddress" onclick="copyAddress()">Copy postal address to street address</a></p>
 				  <div class="form-group">
 					<label for="streetAddress" class="col-lg-2 control-label">Street address*</label>
@@ -66,40 +65,30 @@
       }
 
     </script>
-				  <div class="form-group <?php if (isset($mainContactError)) print "has-error"; ?>">
+				  <div class="form-group">
 					<label for="mainContact" class="col-lg-2 control-label">Employer contact name*</label>
 					<div class="col-lg-10">
-					  <input type="text" class="form-control" name="mainContact" placeholder="Main contact name" value="<?php if(isset($mainContact)) {print $mainContact;} ?>" />
+					  <input type="text" class="form-control" id="mainContact" placeholder="Main contact name" />
 					</div>
 				  </div>
-				  <div class="form-group <?php if (isset($contactDDIError)) print "has-error"; ?>">
+				  <div class="form-group">
 					<label for="contactDDI" class="col-lg-2 control-label">Employer contact DDI*</label>
 					<div class="col-lg-10">
-					  <input type="text" class="form-control" name="contactDDI" placeholder="Main contact DDI" value="<?php if(isset($contactDDI)) {print $contactDDI;} ?>" />
+					  <input type="text" class="form-control" id="contactDDI" placeholder="Main contact DDI"  />
 					</div>
 				  </div>
-				  <div class="form-group <?php if (isset($contactMobileError)) print "has-error"; ?>">
+				  <div class="form-group">
 					<label for="contactMobile" class="col-lg-2 control-label">Employer contact mobile</label>
 					<div class="col-lg-10">
-					  <input type="text" class="form-control" name="contactMobile" placeholder="Main contact mobile" value="<?php if(isset($contactMobile)) {print $contactMobile;} ?>" />
+					  <input type="text" class="form-control" id="contactMobile" placeholder="Main contact mobile"  />
 					</div>
 				  </div>
-				  <div class="form-group <?php if (isset($contactEmailError)) print "has-error"; ?>">
+				  <div class="form-group">
 					<label for="contactEmail" class="col-lg-2 control-label">Employer contact email*</label>
 					<div class="col-lg-10">
-					  <input type="email" class="form-control" name="contactEmail" placeholder="Main contact email" value="<?php if(isset($contactEmail)) {print $contactEmail;} ?>" />
+					  <input type="email" class="form-control" id="contactEmail" placeholder="Main contact email" />
 					</div>
-				  </div>
-				  <?php if(isset($formError)) { ?>
-				  <div class="alert alert-warning col-lg-offset-2 col-lg-10">
-					Form saved but not completed. Please ensure you have filled in all fields <?php if(isset($emailError)) print "and that Contact email is a valid address"; ?>
-				  </div>
-				  <?php } ?>
-				  <?php if(!isset($formError) && isset($emailError)) { ?>
-				  <div class="alert alert-warning col-lg-offset-2 col-lg-10">
-					Form saved but not completed. Please enter a valid email address
-				  </div>
-				  <?php } ?>
+                  </div>
 				    <div class="input-group col-lg-offset-2 col-lg-10"><button class="btn btn-default" id="nextButton" type="button" onclick="employerInfo()">Next Section</button></div>
 				</form>
         

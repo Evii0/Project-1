@@ -11,10 +11,10 @@
                 <div class="panel-body">
                     <form class="form-horizontal" action="form.php?form=ProofIdentity" method="post">
                         <input type="hidden" name="idMethod" value="New Zealand passport number">
-                        <div class="form-group <?php if(isset($passportNumberError)) print "has-error"; ?>">
+                        <div class="form-group">
                             <label for="passportNumber" class="col-lg-2 control-label">NZ passport number</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" name="passportNumber" placeholder="NZ passport number" value="<?php if(isset($passportNumber)) {print $passportNumber;} ?>" />
+                                <input type="text" class="form-control" id="passportNumber" placeholder="NZ passport number" />
                             </div>
                         </div>
                         <div class="form-group <?php if(isset($passportExpiryError)) print "has-error"; ?>">
@@ -67,8 +67,6 @@
                             </div>
                         </div>
                         <p class="help-block col-lg-offset-2 col-lg-10" id="aussieRules"></p>
-                        <script type="text/javascript">
-                        </script>
                         <div class="form-group <?php if(isset($documentAError) || isset($documentError)) {print "has-error";} ?>">
                             <label for="traineePreviousNameDoc" class="col-lg-2 control-label">Verification document A</label>
                             <div class="col-lg-3">

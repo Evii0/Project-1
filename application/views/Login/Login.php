@@ -38,6 +38,7 @@
         <div id="container">
             <div class="row">
                 <div class="col-lg-12">
+                    <div id="output"></div>
                      <div id="outer">
                         <div id="createContainer">
                             <div class="panel panel-default">

@@ -22,9 +22,9 @@ class Welcome extends CI_Controller {
 	{
         $data['title'] = ucfirst($page);
         
-        $this->load->view('Login/Login', $data);
+        //$this->load->view('Dashboard/Dashboard', $data);
         
-        /*$this->load->view('Constants/header', $data);
+        $this->load->view('Constants/header', $data);
         $this->load->view('Forms/Training Agreement/Navigation', $data);
 		$this->load->view('Forms/Training Agreement/GeneralDetails');
         $this->load->view('Forms/Training Agreement/Ethnicity', $data);

@@ -76,44 +76,44 @@
 			  
 			  
 			  
-			  <div class="form-group <?php if (isset($streetNumberError)) print "has-error"; ?>">
+			  <div class="form-group">
 				<label for="street_number" class="col-lg-2 control-label">Street Number</label>
 				<div class="col-lg-10">
-				  <input type="text" class="form-control" name="street_number" id="street_number" placeholder="Street number" value="<?php if(isset($street_number)) {print $street_number;} ?>"  />
+				  <input type="text" class="form-control" name="street_number" id="street_number" placeholder="Street number"  />
 				</div>
 			  </div>
-			  <div class="form-group <?php if (isset($streetNameError)) print "has-error"; ?>">
+			  <div class="form-group">
 				<label for="route" class="col-lg-2 control-label">Street Name *</label>
 				<div class="col-lg-10">
-				  <input type="text" class="form-control" name="route" id="route" placeholder="Street address" value="<?php if(isset($route)) {print $route;} ?>" />
+				  <input type="text" class="form-control" name="route" id="route" placeholder="Street address" />
 				</div>
 			  </div>
 			  
-			  <div class="form-group <?php if (isset($cityError)) print "has-error"; ?>">
+			  <div class="form-group">
 				<label for="locality" class="col-lg-2 control-label">City / Town *</label>
 				<div class="col-lg-10">
-				  <input type="text" class="form-control" name="locality" id="locality" placeholder="City / Town" value="<?php if(isset($locality)) {print $locality;} ?>" />
+				  <input type="text" class="form-control" name="locality" id="locality" placeholder="City / Town" />
 				</div>
 			  </div>
 			  
 			  <div class="form-group">
 				<label for="region" class="col-lg-2 control-label">Region</label>
 				<div class="col-lg-10">
-				  <input type="text" class="form-control" name="administrative_area_level_1" id="administrative_area_level_1" placeholder="Region" value="<?php if(isset($region)) {print $region;} ?>" />
+				  <input type="text" class="form-control" name="administrative_area_level_1" id="administrative_area_level_1" placeholder="Region" />
 				</div>
 			  </div>
 			  
-			  <div class="form-group <?php if (isset($postCodeError)) print "has-error"; ?>">
+			  <div class="form-group">
 				<label for="postal_code" class="col-lg-2 control-label">Post code *</label>
 				<div class="col-lg-10">
-				  <input type="text" class="form-control" name="postal_code" id="postal_code" placeholder="Post code" value="<?php if(isset($postCode)) {print $postCode;} ?>" />
+				  <input type="text" class="form-control" name="postal_code" id="postal_code" placeholder="Post code" />
 				</div>
 			  </div>
 			  
-			  <div class="form-group <?php if (isset($countryError)) print "has-error"; ?>">
+			  <div class="form-group">
 				<label for="postal_code" class="col-lg-2 control-label">Country *</label>
 				<div class="col-lg-10">
-				  <input type="text" class="form-control" name="country" id="country" placeholder="Country" value="<?php if(isset($country)) {print $country;} ?>" />
+				  <input type="text" class="form-control" name="country" id="country" placeholder="Country" />
 				</div>
 			  </div>
 			  
@@ -126,7 +126,7 @@
 				</div>
 			  </div>
 				
-			  <div class="form-group <?php if (isset($homePhoneError)) print "has-error"; ?>">
+			  <div class="form-group">
 				<label for="homePhone" class="col-lg-2 control-label">Home phone</label>
 				<div class="col-lg-10">
 				  <input type="text" class="form-control" id="homePhone" name="homePhone" />

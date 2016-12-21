@@ -1,4 +1,4 @@
-goog.require('goog.dom');
+/*goog.require('goog.dom');
 goog.require('goog.json');
 goog.require('goog.proto2.ObjectSerializer');
 goog.require('goog.string.StringBuffer');

@@ -23,38 +23,53 @@ function validateEmail(email){
 
 
 function createAccount(){
+    var email = document.getElementById("newEmail").value;
+    var password1 = document.getElementById("pass1").value;
+    var password2 = document.getElementById("pass2").value;
     
+    if(password1 != password2){
+        var container = document.getElementById('output');
+        container.innerHTML = "Passwords do not match.";
+        return;
+    }
+    
+    var params = JSON.stringify({type: create, uid: email, pass: password1,});
+    
+    getRequest(
+        'application/views/Login/Server.php/', // URL for the PHP file
+        params,   //json arguments
+        drawOutput,  // handle successful request
+        drawError    // handle error
+    );
 }
 
 function login(){
     var email = document.getElementById("email").value;
     var password = document.getElementById("pass").value;
+    var params = JSON.stringify({type: login, uid: email, pass: password,});
+    
+    getRequest(
+        'application/views/Login/Server.php/', // URL for the PHP file
+        params,   //json arguments
+        success,  // handle successful request
+        error    // handle error
+    );
 }
 
-
-// handles the click event for link 1, sends the query
-function getOutput() {
-    console.log("hi");
-    
-  getRequest(
-      'application/views/Login/Server.php/', // URL for the PHP file
-       drawOutput,  // handle successful request
-       drawError    // handle error
-  );
-  return false;
-}  
 // handles drawing an error message
-function drawError() {
+function error() {
     var container = document.getElementById('output');
-    container.innerHTML = 'Bummer: there was an error!';
+    container.innerHTML = responseText;
 }
 // handles the response, adds the html
-function drawOutput(responseText) {
-    //TODO: go to dashboard controller
+function success(responseText) {
+    localStorage.setItem("email", document.getElementById("email").value);
+    localStorage.setItem("token", responseText);
+    
+    document.location.href = ""; //navigate to dashboard controller
 }
 // helper function for cross-browser request object
-function getRequest(url, success, error) {
-    var params = JSON.stringify({a: 1, b: 2,});
+function getRequest(url, params, success, error) {
     var req = false;
     try{
         // most browsers

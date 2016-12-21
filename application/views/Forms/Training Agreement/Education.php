@@ -1,13 +1,32 @@
+<?php
+
+include "application/views/Forms/Training Agreement/assets/Arrays.php";
+$schoolCountries =$countries;
+$schools = $nzSchools;
+array_unshift($schoolCountries, "");
+array_unshift($schools, "");
+
+?>
+
 <div class="containerContainer" id="education">
     <h1 class="page-header">Education</h1>
     <div class="contentContainer">
         <div class="row">
             <div class="col-lg-12">
                         <form class="form-horizontal" action="form.php?form=Education" method="post">
-                            <div class="form-group <?php if (isset($schoolCountryError)) print "has-error"; ?>">
+                            <div class="form-group">
                                 <label for="schoolCountry" class="col-lg-2 control-label">Secondary school country*</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" name="secondarySchoolCountry" placeholder="Country"/>
+                                    <select class="form-control" id="schoolCountry" name="schoolCountry" onChange="changeCountry()">
+                                        <?php
+                                            $arrayLength = count($schoolCountries);
+                                            for($x = 1; $x < $arrayLength; $x++) {
+                                                print '<option value="'.$schoolCountries[$x].'" ';
+                                                //if($schoolCountry == $schoolCountries[$x]) print 'selected="selected"';
+                                                print '>'.$schoolCountries[$x].'</option>';
+                                            }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
                             <script type="text/javascript">
@@ -21,28 +40,36 @@
                                 }
                             </script>
 
-                            <div class="form-group <?php if (isset($secondarySchoolError)) print "has-error"; ?>">
+                            <div class="form-group">
                                 <label for="secondarySchool" class="col-lg-2 control-label">Secondary school*</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" name="secondarySchool" placeholder="School" />
+                                    <select class="form-control" id="secondarySchool" name="secondarySchool" disabled="true">
+                                        <?php
+                                            $arrayLength = count($schools);
+                                            for($x = 1; $x < $arrayLength; $x++) {
+                                                print '<option value="'.$schools[$x].'" ';
+                                                print '>'.$schools[$x].'</option>';
+                                            }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
-                            <div class="form-group <?php if (isset($lastYearAtSchoolError)) print "has-error"; ?>">
+                            <div class="form-group">
                                 <label for="lastYearAtSchool" class="col-lg-2 control-label">Last year at school*</label>
                                 <div class="col-lg-10">
                                     <input type="text" class="form-control" name="lastYearAtSchool" placeholder="Year" id="lastSchoolYear" />
                                 </div>
                             </div>
 
-                            <div class="form-group <?php if (isset($mainLanguageError)) print "has-error"; ?>">
+                            <div class="form-group">
                                 <label for="mainLanguage" class="col-lg-2 control-label">Main language*</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" name="mainLanguage" placeholder="Language" />
+                                    <input type="text" class="form-control" name="mainLanguage" placeholder="Language" id="language" />
                                 </div>
                             </div>
 
 
-                            <div class="form-group <?php if (isset($HighestSecondryQualError)) print "has-error"; ?>">
+                            <div class="form-group">
                                 <label for="HighestSecondryQual" class="col-lg-2 control-label">Highest secondary qualification</label>
                                 <div class="col-lg-10">
                                     <select class="form-control" name="HighestSecondryQual">
@@ -59,7 +86,7 @@
                             </div>
 
 
-                            <div class="form-group <?php if (isset($HighestTertiaryQualError)) print "has-error"; ?>">
+                            <div class="form-group">
                                 <label for="HighestTertiaryQual" class="col-lg-2 control-label">Highest tertiary qualification</label>
                                 <div class="col-lg-10">
                                     <select class="form-control" name="HighestTertiaryQual" id="HighestTertiaryQual" onChange="HighestTertiaryQualChanged()">
@@ -77,11 +104,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group <?php if (isset($qualificationLevelError)) print "has-error"; ?>">
+                            <div class="form-group">
                                 <label for="qualificationLevel" class="col-lg-2 control-label">Qualification level</label>
                                 <div class="col-lg-10">
-                                    <select class="form-control" name="qualificationLevel" id="qualificationLevel">
-                                        <option></option>
+                                    <select class="form-control" name="qualificationLevel" id="qualificationLevel" disabled = "true">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -93,16 +119,17 @@
                             </div>
                             <script type="text/javascript">
                                 function HighestTertiaryQualChanged() {
+                                    console.log("test");
                                     document.getElementById("qualificationLevel").disabled = true;
-                                    var value = document.getElementById("HighestTertiaryQual").value;
-                                    if(value === "Certificate" || value === "Diploma") {
+                                    var value = document.getElementById("HighestTertiaryQual");
+                                    if(value.selectedIndex > 2 && value.selectedIndex < 9) {
                                         document.getElementById("qualificationLevel").disabled = false;
                                     }
                                 }
                             </script>
 
 
-                            <div class="form-group <?php if (isset($firstYearAtTertiaryError)) print "has-error"; ?>">
+                            <div class="form-group">
                                 <label for="firstYearAtTertiary" class="col-lg-2 control-label">First year at tertiary</label>
                                 <div class="col-lg-10">
                                     <input type="text" class="form-control" name="firstYearAtTertiary" placeholder="YYYY" id="tertiaryYear" />
@@ -129,12 +156,6 @@
                                     </select>
                                 </div>
                             </div>
-
-                            <?php if(isset($formError)) { ?>
-                            <div class="alert alert-warning col-lg-offset-2 col-lg-10">
-                            Form saved but not completed. Please ensure you have filled in all required fields.
-                            </div>
-                            <?php } ?>
                         </form>
                     
                 

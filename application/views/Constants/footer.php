@@ -1,3 +1,16 @@
+        <div id="footer" style="width: 100%;
+    height: 80px;
+    padding-top: 12px;
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    background-color: #e7e7e7;
+    color: black;
+    font-size: 0.9em;">
+            <p>&copy;2016 Skills Ltd.</p>
+            <p>Built By IWS Design Ltd.</p>
+        </div>        
+
         <script src="vendor/jquery/jquery.min.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
