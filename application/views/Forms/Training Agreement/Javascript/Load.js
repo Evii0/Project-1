@@ -3,7 +3,7 @@ var array = ["streetNum", "streetName", "city", "region", "postCode", "country",
 function onLoad(){
     if(!validateLoggedIn()) return;
     else{
-        
+
     }
 }
 
@@ -19,7 +19,7 @@ information saved to database has been retrieved.
 */
 function gotStuff(responseText){
     var dataSplit = responseText.split("&");
-    
+
     for(var i = 0; i < array.length; i++){
         if(dataSplit[i] != "null"){
             //special cases (ie not just setting the value)
@@ -31,7 +31,7 @@ function gotStuff(responseText){
                     if(split[j].indexOf("other") != -1){
                         var otherSplit = split[j].split("|");
                         document.getElementById("other").checked = true;
-                        document.getElementById("otherTextBox").value = otherSplit[1]; 
+                        document.getElementById("otherTextBox").value = otherSplit[1];
                     }
                     else{
                         document.getElementById(split[j]).checked = true;
@@ -43,7 +43,7 @@ function gotStuff(responseText){
                 var split = dataSplit[i].split("|");
                 document.getElementById("iwi").value = split[0];
                 if(split[1] == "true")document.getElementById("dontKnow").checked = true;
-                if(split[2] == "true")document.getElementById("dontIdentify").checked = "true";
+                if(split[2] == "true")document.getElementById("dontIdentify").checked = true;
             }
             else{
                 document.getElementById(array[i]).value = dataSplit[i];
@@ -75,7 +75,7 @@ function getRequest(url, success, error) {
     if (typeof error!= 'function') error = function () {};
     req.onreadystatechange = function(){
         if(req.readyState == 4) {
-            return req.status === 200 ? 
+            return req.status === 200 ?
                 success(req.responseText) : error(req.status);
         }
     }

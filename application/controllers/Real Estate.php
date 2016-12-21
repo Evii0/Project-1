@@ -1,7 +1,7 @@
 <?php
 class Pages extends CI_Controller {
 
-    public function view($page = 'GeneralDetails')
+    public function view($page = 'QualificationSelection')
     {
         if ( ! file_exists(APPPATH.'views/pages/Training Agreement/'.$page.'.php'))
         {
