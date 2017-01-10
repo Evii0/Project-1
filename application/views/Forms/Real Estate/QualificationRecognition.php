@@ -1,8 +1,21 @@
+<?php
+$qualifications = array(
+	"Bachelor of Commerce (Valuation and Property Management) conferred by Lincoln University after 1992",
+    "Bachelor of Property conferred by Auckland University after 1992",
+    "Bachelor of Business Studies (Real Estate) conferred by Massey University after 1992",
+    "Bachelor of Business Studies (Valuation and Property Management) conferred by Massey University between 1992 and 2005",
+    "Membership of the Royal Institution of Chartered Surveyors as a member or Fellow with chartered designation in general practice",
+    "Bachelor of Property Administration conferred by Auckland University after 1987",
+    "Bachelor of Business Studies (Valuation and Property Management) conferred by Massey University after 2005"
+);
+?>
+
 <div class="containerContainer" id="qualificationRecognition">
+    
     <h1 class="page-header">Qualification Recognition</h1>
     <div class="contentContainer">
         <form class="form-horizontal" action="form.php?form=TraineeInformation" method="post" enctype="multipart/form-data">
-
+            <div><p class="help-block col-lg-10" id="verificationDocumentUploaded"></p><br></div>
           <h3>Recognition of other Qualification</h3>
           <div class="form-group">
             <input type="checkbox" id="qualificationCheckbox" class="col-lg-2 control-label">
@@ -18,14 +31,16 @@
                   assessment depending on the type of application.</p>
                 <p><i>Select the relevant Qualification:</i></p>
 
-                <select class="form-control" name="schedule3">
-                  <option>Bachelor of Commerce (Valuation and Property Management) conferred by Lincoln University after 1992</option>
-                  <option>Bachelor of Property conferred by Auckland University after 1992</option>
-                  <option>Bachelor of Business Studies (Real Estate) conferred by Massey University after 1992</option>
-                  <option>Bachelor of Business Studies (Valuation and Property Management) conferred by Massey University between 1992 and 2005</option>
-                  <option>Membership of the Royal Institution of Chartered Surveyors as a member or Fellow with chartered designation in general practice</option>
-                  <option>Bachelor of Property Administration conferred by Auckland University after 1987</option>
-                  <option>Bachelor of Business Studies (Valuation and Property Management) conferred by Massey University after 2005</option>
+                <select class="form-control" name="schedule3" id="qualificationList">   
+                    <?php
+						$arrayLength = count($qualifications);
+						for($x = 0; $x < $arrayLength; $x++) {
+							print '<option value="'.$qualifications[$x].'" ';
+							//if($idMethod == $idOptions[$x]) print 'selected="selected"';
+							print '>'.$qualifications[$x].'</option>';
+						}
+					?>
+                  
                 </select>
               </div>
               <div class="col-lg-10">
@@ -52,7 +67,7 @@
               assessment (unit standard 23137). Full information will be provided in a response letter.</p>
             <label for="qualificationName" class="col-lg-2 control-label">Qualification</label>
             <div class="col-lg-5">
-              <input type="text" class="form-control" name="qualificationName" placeholder="Qualification Name">
+              <input type="text" class="form-control" name="qualificationName" id="qualificationName" placeholder="Qualification Name">
             </div>
           </div>
 
@@ -60,7 +75,7 @@
             <label for="transferDate" class="col-lg-2 control-label">Date licence transferred to New Zealand</label>
             <div class="col-lg-5">
               <br>
-              <input type="text" class="form-control" name="transferDate" placeholder="dd/mm/yyyy">
+              <input type="text" class="form-control" name="transferDate" id="transferDate" placeholder="dd/mm/yyyy">
             </div>
           </div>
           <div class="col-lg-10">
@@ -69,12 +84,12 @@
               <th><label>Upload a certified copy of your TTMR licence from REAA</label></th>
               <th><p title="A certified copy must show the logo of the institution, date of completion, each paper taken, and be marked with a stamp of certification. If your qualification is not in your given name, please support it with copies of name change documentation. A verified copy is also acceptable if signed by a JP, lawyer or NZ Police." class="helper"><u><b>?</b></u></p></th>
             </table>
-            <input type="file" name="tasQualRecogUploader" id="tasQualRecogUploader">
+            <input type="file" name="tasQualRecogUploader" id="tasQualUploader">
           </div>
         </div>
       </div>
       <div class="input-group col-lg-offset-2 col-lg-10">
-        <button class="btn btn-default" id="nextButton" type="button" onclick="nextSection('')">Submit</button>
+        <button class="btn btn-default" id="nextButton" type="button" onclick="qualificationRecognition()">Next Section</button>
       </div>
     </form>
   </div>

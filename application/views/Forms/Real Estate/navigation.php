@@ -2,7 +2,9 @@
     activeSection = "qualificationSelection";
 </script>        
 
-<link href="application/views/Forms/Real Estate/css/main.css" rel="stylesheet" type="text/css">
+<link href="../application/views/Forms/Real Estate/css/main.css" rel="stylesheet" type="text/css">
+<script src="../application/views/Forms/Real Estate/Javascript/Validation%20Functions.js"></script>
+<script src="../application/views/Forms/Real Estate/Javascript/Load.js"></script>
 
 <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -14,7 +16,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div id="logoContainer">
-                    <img src="application/views/Forms/Real Estate/assets/skillsLogo.png" id="logo">
+                    <img src="" id="logo">
                 </div>
             </div>
             <!-- /.navbar-header -->
@@ -31,7 +33,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a onclick="logout()"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -39,12 +41,12 @@
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
-
+            <div id="name"></div>
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
 
-                        <div id="progressBar">
+                        <!--<div id="progressBar">
                             <p>
                                 <strong>Progress</strong>
                                 <span class="pull-right text-muted">80% Complete</span>
@@ -54,7 +56,7 @@
                                     <span class="sr-only">80% Complete (danger)</span>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
 
                         <li onclick="linkClick('qualificationSelection')">

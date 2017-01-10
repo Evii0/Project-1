@@ -1,9 +1,9 @@
 
 function validateLoggedIn(){
-    var params = JSON.stringify({type: validate, uid: localStorage.getItem("email"), localStorage.getItem("token"),});
+    var params = JSON.stringify({type: "validate", uid: localStorage.getItem("email"), token: localStorage.getItem("token"),});
     
     getRequest(
-        'application/views/Login/Server.php/', // URL for the PHP file
+        '../application/Server/Server.php/', // URL for the PHP file
         params,   //json arguments
         validationSuccess,  // handle successful request
         validationError    // handle error
@@ -11,18 +11,20 @@ function validateLoggedIn(){
 }
 
 // successful Validation, adds users name to header and saves it to local storage
-function validationSuccess(responseText) { 
-    document.getElementById("name").value = localStorage.getItem("email");
-    return true;
+function validationSuccess(response) {
+    var json = JSON.parse(response);
+    localStorage.setItem("name", json.name);
 }
 
 // handles an error message from validation
-function validationError() {
+function validationError(response) {
     //THROW THEM OUT!!!!!!
+    alert("Error: Mismatched token, please log in again.");
+    document.location.href = "../";
     return false;
 }
 
-function getRequest(url, success, error) {
+function getRequest(url, params, success, error) {
     var req = false;
     try{
         // most browsers
@@ -49,7 +51,7 @@ function getRequest(url, success, error) {
                 success(req.responseText) : error(req.status);
         }
     }
-    req.open("GET", url, true);
-    req.send();
+    req.open("POST", url, true);
+    req.send(params);
     return req;
 }

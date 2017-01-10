@@ -1,9 +1,11 @@
 <script>
     activeSection = "generalDetails";
 </script>
-<script src="application/views/Forms/Training Agreement/Javascript/Validation Functions.js"></script>
+<script src="../application/views/Forms/Training Agreement/Javascript/Validation Functions.js"></script>
+<script src="../application/views/Forms/Training Agreement/Javascript/Load.js"></script>
 
-<link href="application/views/Forms/Training Agreement/CSS/content.css" rel="stylesheet" type="text/css">
+<link href="../application/views/Forms/Training Agreement/CSS/content.css" rel="stylesheet" type="text/css">
+<link href="../application/views/Forms/Training Agreement/CSS/navigation.css" rel="stylesheet" type="text/css">
 
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -15,7 +17,7 @@
             <span class="icon-bar"></span>
         </button>
         <div id="logoContainer">
-            <img src="application/views/Forms/Training Agreement/assets/logos/skillsLogo.png" id="logo">
+            <img src="" id="logo">
         </div>
     </div>
     <!-- /.navbar-header -->
@@ -32,7 +34,7 @@
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <li><a href="" onclick="logout()"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
             </ul>
             <!-- /.dropdown-user -->
@@ -40,12 +42,12 @@
         <!-- /.dropdown -->
     </ul>
     <!-- /.navbar-top-links -->
-
+    <div id="name"></div>
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
 
-                <div id="progressBar">
+                <!--<div id="progressBar">
                     <p>
                         <strong>Progress</strong>
                         <span class="pull-right text-muted" id="progressBarText">80% Complete</span>
@@ -55,7 +57,7 @@
                             <span class="sr-only">80% Complete (danger)</span>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
                 <li>
                     <a><i class="fa fa-pencil fa-fw"></i> Trainee Information<span class="fa arrow"></span></a>

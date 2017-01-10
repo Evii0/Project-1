@@ -22,26 +22,11 @@
       // This example requires the Places library. Include the libraries=places
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
-      var placeSearch, postalAddress, streetAddress;
-      var componentForm = {
-        street_number: 'short_name',
-        route: 'long_name',
-        locality: 'long_name',
-        administrative_area_level_1: 'short_name',
-        country: 'long_name',
-        postal_code: 'short_name'
-      };
-			  
-      function initAutocomplete() {
-        // Create the postalAddress object, restricting the search to geographical
-        // location types.
-        postalAddress = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('postalAddress')),
-            {types: ['geocode'], componentRestrictions: {country: "nz"}});
-          
-          postalAddress.addListener('place_changed', fillInAddress);
-      }
+                      
+                        //NOTE: the auto complete for this page is declared in the employerInformation file
+                        //NOTE: Yes it should be moved somewhere sensible
+                        //NOTE: Yes I know I'm lazy.
+                        //NOTE: on the plus side it works :)
 
       function fillInAddress() {
         // Get the place details from the autocomplete object.
@@ -136,7 +121,7 @@
 			  <div class="form-group">
 				<label for="mobilePhone" class="col-lg-2 control-label">Mobile *</label>
 				<div class="col-lg-10">
-				  <input type="text" class="form-control" id="mobile" name="mobilePhone" id="mobile"/>
+				  <input type="text" class="form-control" id="mobilePhone" name="mobilePhone" id="mobile"/>
 				</div>
 			  </div>
 				

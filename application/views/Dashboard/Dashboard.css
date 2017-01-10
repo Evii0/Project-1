@@ -61,3 +61,13 @@ footer{
     color: black;
     font-size: 0.9em;
 }
+
+#dropdown{
+    float: right;
+}
+
+#name{
+    float: right;
+    padding-right: 25px;
+    padding-top:18px;
+}

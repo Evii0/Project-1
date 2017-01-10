@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://localhost/Git/application/views/Login/Login.php';
+$config['base_url'] = 'https://localhost/Git';
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +35,7 @@ $config['base_url'] = 'https://localhost/Git/application/views/Login/Login.php';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'Login.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------

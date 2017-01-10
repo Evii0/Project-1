@@ -48,3 +48,9 @@ input[type="checkbox"]:checked ~ .revealActive {
     display: none;
     position: absolute;
 }
+
+#name{
+    float: right;
+    padding-right: 25px;
+    padding-top:18px;
+}

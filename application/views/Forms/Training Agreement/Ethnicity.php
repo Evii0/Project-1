@@ -9,8 +9,8 @@
                 <label><input type="checkbox" id="British/Irish" value="Bike"> British/Irish</label><br>
                 <label><input type="checkbox" id="Cambodian" value="Bike"> Cambodian</label><br>
                 <label><input type="checkbox" id="Chinese" value="Bike"> Chinese</label><br>
-                <label><input type="checkbox" id="Cook Island Maori" value="Bike"> Cook Island Maori</label><br>
-                <label><input type="checkbox" id="NZ Maori" value="Bike" id="NZMaori"> NZ Maori</label><br>
+                <label><input type="checkbox" id="CookIslandMaori" value="Bike"> Cook Island Maori</label><br>
+                <label><input type="checkbox" id="NZMaori" value="Bike" id="NZMaori"> NZ Maori</label><br>
                 <label><input type="checkbox" id="Dutch" value="Bike"> Dutch</label><br>          
             </div>
             <div class="columns">
@@ -27,8 +27,8 @@
             <div class="columns">
                 <label><input type="checkbox" id="Middle Eastern" value="Bike"> Middle Eastern</label><br>
                 <label><input type="checkbox" id="Niuean" value="Bike"> Niuean</label><br>
-                <label><input type="checkbox" id="South Slav" value="Bike"> South Slav</label><br>
-                <label><input type="checkbox" id="Sri Lankan" value="Bike"> Sri Lankan</label><br>
+                <label><input type="checkbox" id="SouthSlav" value="Bike"> South Slav</label><br>
+                <label><input type="checkbox" id="SriLankan" value="Bike"> Sri Lankan</label><br>
                 <label><input type="checkbox" id="Tokelauan" value="Bike"> Tokelauan</label><br>
                 <label><input type="checkbox" id="Tongan" value="Bike"> Tongan</label><br>
                 <label><input type="checkbox" id="Vietnamese" value="Bike"> Vietnamese</label><br>
@@ -36,10 +36,10 @@
                 <label><input type="checkbox" id="Samoa" value="Bike"> Samoan</label><br>
             </div>
             <div class="columns">
-                <label><input type="checkbox" id="Other Asian" value="Bike"> Other Asian</label><br>
-                <label><input type="checkbox" id="Other European" value="Bike"> Other European</label><br>
-                <label><input type="checkbox" id="Other Pacific Nation" value="Bike"> Other Pacific Nation</label><br>
-                <label><input type="checkbox" id="Other Southeast Asian" value="Bike"> Other Southeast Asian</label><br>
+                <label><input type="checkbox" id="OtherAsian" value="Bike"> Other Asian</label><br>
+                <label><input type="checkbox" id="OtherEuropean" value="Bike"> Other European</label><br>
+                <label><input type="checkbox" id="OtherPacific Nation" value="Bike"> Other Pacific Nation</label><br>
+                <label><input type="checkbox" id="OtherSoutheast Asian" value="Bike"> Other Southeast Asian</label><br>
                 <label><input type="checkbox" id="Other" value="Bike"> Other</label><br>
                 <div class="col-lg-10" id="other">
                     <input type="text" class="form-control" placeholder="Other Ethnicity" id="otherTextBox"/>

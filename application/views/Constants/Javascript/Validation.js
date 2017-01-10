@@ -47,6 +47,8 @@ Makes sure given year is smaller or equal to current year
 Returns bool
 */
 function validateYear(year){
+    var pattern = /^\d+$/;;
+    if(!pattern.test(year)) return false;
     if(year >= new Date().getFullYear()) return false;
     else return true;
 }
@@ -94,9 +96,9 @@ Then checks to see that the number selected falls within the range.
 Returns bool
 */
 function validateNumberOfSelections(selections, min, max){
-    var split = selections.split(";");
-    console.log(split.length);
-    if(split.length > max)return false;
-    if(split.length < min)return false;
+    var split = selections.split(",");
+    console.log(selections + ", " +  split.length);
+    if(split.length - 1 > max)return false;
+    if(split.length - 1 < min)return false;
     else return true;
 }

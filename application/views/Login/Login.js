@@ -1,15 +1,16 @@
-function createAccount(){
-    validateEmail(document.getElementById('email').value);
-}
-
-function login(){
-    //go to database and check email and password.
-}
-
 function showCreate(){
-    console.log("called");
     document.getElementById('loginContainer').style.display = "none";
     document.getElementById('createContainer').style.display = "inline";
+}
+
+function back(){
+    document.getElementById('loginContainer').style.display = "inline";
+    document.getElementById('createContainer').style.display = "none";
+}
+
+function forgotEmail(){
+    localStorage.setItem("logo", logo);
+    window.href="../index.php/PasswordReset";
 }
 
 /*
@@ -26,47 +27,74 @@ function createAccount(){
     var email = document.getElementById("newEmail").value;
     var password1 = document.getElementById("pass1").value;
     var password2 = document.getElementById("pass2").value;
+    var name = document.getElementById("firstName").value + " " + document.getElementById("lastName").value;
     
     if(password1 != password2){
-        var container = document.getElementById('output');
-        container.innerHTML = "Passwords do not match.";
+        alert("Passwords do not match.");
+        return;
+    }
+    if(password1.length < 15){
+        alert("Please provide a password at least 15 characters long.");
         return;
     }
     
-    var params = JSON.stringify({type: create, uid: email, pass: password1,});
+    var params = JSON.stringify({type: "create", uid: email, pass: password1, name: name,});
     
     getRequest(
         'application/views/Login/Server.php/', // URL for the PHP file
         params,   //json arguments
-        drawOutput,  // handle successful request
-        drawError    // handle error
+        createAccountSuccess,  // handle successful request
+        createAccountError    // handle error
     );
 }
+
+function createAccountSuccess(response){
+    var json = JSON.parse(response);
+    localStorage.setItem("email", document.getElementById("newEmail").value);
+    localStorage.setItem("name", document.getElementById("firstName").value + " " + document.getElementById("lastName").value);
+    localStorage.setItem("token", json.token);
+    localStorage.setItem("logo", logo);
+    localStorage.setItem("url", baseUrl);
+    
+    document.location.href = baseUrl + "/index.php/dashboard"; //navigate to dashboard controller
+}
+
+function createAccountError(response){
+    var json = JSON.parse(response.split(")")[1]);
+    alert(json.error);
+}
+
+
+
 
 function login(){
     var email = document.getElementById("email").value;
     var password = document.getElementById("pass").value;
-    var params = JSON.stringify({type: login, uid: email, pass: password,});
+    var params = JSON.stringify({type: "login", uid: email, pass: password,});
     
     getRequest(
         'application/views/Login/Server.php/', // URL for the PHP file
         params,   //json arguments
-        success,  // handle successful request
-        error    // handle error
+        loginSuccess,  // handle successful request
+        loginError    // handle error
     );
 }
 
 // handles drawing an error message
-function error() {
-    var container = document.getElementById('output');
-    container.innerHTML = responseText;
+function loginError(response) {
+    var json = JSON.parse(response.split(")")[1]);
+    alert("Error: Incorrect username or password");
 }
 // handles the response, adds the html
-function success(responseText) {
+function loginSuccess(response) {
+    var json = JSON.parse(response);
     localStorage.setItem("email", document.getElementById("email").value);
-    localStorage.setItem("token", responseText);
+    localStorage.setItem("token", json.token);
+    localStorage.setItem("name", json.name);
+    localStorage.setItem("logo", logo);
+    localStorage.setItem("url", baseUrl);
     
-    document.location.href = ""; //navigate to dashboard controller
+    document.location.href = baseUrl + "/index.php/dashboard"; //navigate to dashboard controller
 }
 // helper function for cross-browser request object
 function getRequest(url, params, success, error) {
@@ -93,7 +121,7 @@ function getRequest(url, params, success, error) {
     req.onreadystatechange = function(){
         if(req.readyState == 4) {
             return req.status === 200 ? 
-                success(req.responseText) : error(req.status);
+                success(req.responseText) : error(req.responseText);
         }
     }
     req.open("POST", url, true);

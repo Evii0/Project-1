@@ -87,7 +87,20 @@
                 </div>
             </div>
         </div>
-        <p>By clicking Submit you agree to the above terms and conditions</p>
-        <div class="input-group col-lg-offset-2 col-lg-10"><button class="btn btn-default" id="nextButton" type="button" onclick="nextSection('ethnicity')">Submit</button></div>
+        <form class="form-horizontal" action="form.php?form=Terms" method="post">
+			<div class="form-group col-lg-12">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" name="agreeTerms" value="agree" id="agreeTerms">I agree to the above terms and conditions
+					</label>
+				</div>
+			</div>
+
+			<input type="hidden" value="yes" name="hiddenInput" />
+
+			<div class="input-group col-lg-offset-2 col-lg-10">
+                <button class="btn btn-default" id="nextButton" type="button" onclick="terms()">Submit Form</button>
+            </div>
+		</form>
     </div>
 </div>

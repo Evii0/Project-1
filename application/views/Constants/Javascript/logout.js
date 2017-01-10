@@ -1,24 +1,27 @@
 function logout(){
-    var params = JSON.stringify({type: logout, uid: localStorage.getItem("email")});
+    var params = JSON.stringify({type: "logout", uid: localStorage.getItem("email")});
     getRequest(
-        'application/views/Login/Server.php/', // URL for the PHP file
+        '../application/views/Login/Server.php/', // URL for the PHP file
         params,   //json arguments
-        success,  // handle successful request
-        error    // handle error
+        loggedOut,  // handle successful request
+        logOutFail    // handle error
     );
 }
 
-function success(){
+function loggedOut(){
     //TODO: return to login page
-    document.location.href = "";
+    localStorage.removeItem("email");
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    document.location.href = "../";
 }
 
-function error(){
-    //TODO: explode
+function logOutFail(){
+    alert("Error: Could not log you out.");
 }
 
 // helper function for cross-browser request object
-function getRequest(url, success, error) {
+function getRequest(url, params, success, error) {
     var req = false;
     try{
         // most browsers

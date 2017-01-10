@@ -1,3 +1,17 @@
+<?php
+echo base_url();
+if(isset($_GET["company"])){
+    $param = $_GET["company"];
+    $logo = "";
+    if($param == "skills") $logo = "skillsLogo.png";
+    if($param == "skillsInt") $logo = "skillsIntLogo.png";
+    if($param == "harcourts") $logo = "hc123456.png";
+    if($param == "mp") $logo = "mp12345.png";
+}
+else{
+    $logo = "skillsLogo.png";
+}
+?>
 <html>
     <head>
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,6 +34,11 @@
         
     </head>
     
+    <script type="text/javascript">
+        var logo = "<?php echo $logo; ?>";
+        var baseUrl = "<?php echo base_url(); ?>";
+    </script>
+    
     <body>
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -30,7 +49,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div id="logoContainer">
-                    <img src="application/views/Forms/Training Agreement/assets/logos/skillsLogo.png" id="logo">
+                    <img src="application/views/Login/logos/<?php echo $logo; ?>" id="logo">
                 </div>
             </div>
         </nav>
@@ -50,8 +69,17 @@
                                     <form action="" method="POST">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                            <input type="text" name="email2" placeholder="Email Address" class="form-control" id="email" />
+                                            <input type="text" name="email2" placeholder="Email Address" class="form-control" id="newEmail" />
                                         </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                                            <input type="text" name="email2" placeholder="First Name" class="form-control" id="firstName" />
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                                            <input type="text" name="email2" placeholder="Last Name" class="form-control" id="lastName" />
+                                        </div>
+                                        <br>
                                         <div class="form-group input-group">
                                             <span class="input-group-addon"><i class="fa fa-key"></i></span>
                                             <input type="password" name="pass1" placeholder="Create Password" class="form-control" id="pass1">
@@ -61,7 +89,8 @@
                                             <input type="password" name="pass2" placeholder="Confirm Password" class="form-control" id="pass2">
                                         </div>
                                         <input type="hidden" name="formControl" value="signup" />
-                                        <button class="btn btn-default" type="button" onclick="createAccount()">Create Account</button>
+                                        <button class="btn btn-default" type="button" onclick="back()" id="backButton">Back</button>
+                                        <button class="btn btn-default" type="button" onclick="createAccount()" id="createButton">Create Account</button>
                                     </form>
                                 </div>
                             </div>  
@@ -87,7 +116,7 @@
                                         <input type="hidden" name="formControl" value="login" />
                                         <div id="linksContainer">
                                             <a onclick="showCreate()" class="link" id="create">Create Account</a>
-                                            <a href="passwordReset.php" class="link" id="forgot">Forgot Password</a>
+                                            <a href="" onclick="forgotEmail()" class="link" id="forgot">Forgot Password</a>
                                         </div>
                                         <button class="btn btn-default" type="button" onclick="login()" id="loginButton">Login</button>
                                     </form>

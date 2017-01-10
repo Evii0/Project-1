@@ -13,3 +13,7 @@
     height: 50px;
     width: 135px;
 }
+
+a{
+    cursor: pointer;
+}

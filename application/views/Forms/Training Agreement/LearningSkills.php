@@ -80,7 +80,7 @@ $jobs = array(
 				}
 			</script>
 			
-			<div class="form-group col-lg-12 <?php if(isset($typeOfAssessmentError)) {print 'has-error';} ?>">
+			<div class="form-group col-lg-12">
 				<label for="typeOfAssessment" class="control-label">If yes, please specify</label>
 				<select class="form-control" name="typeOfAssessment" id="typeOfAssessment">
 					<option value="Not Specified">Not Specified</option>

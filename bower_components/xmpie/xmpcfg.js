@@ -1,0 +1,1 @@
+var xmpcfg = {access: { accessToken: 'a7c33023-8dc4-43a6-95ac-87594c73a71e_1bd41b50-9d14-42a3-8c76-925fb18e6525_7591766819074c06981103c577157e31', url: 'http://procure.perceptiongroup.co.nz/XMPieXMPL_REST_API', circleProjectID:'1bd41b50-9d14-42a3-8c76-925fb18e6525', circleProjectName: 'Skills International' }};

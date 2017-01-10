@@ -17,13 +17,13 @@
 				  <div class="form-group">
 					<label for="postalAddress" class="col-lg-2 control-label">Postal address*</label>
 					<div class="col-lg-10">
-					  <input type="text" class="form-control" id="postalAddress" id="postalAddress" placeholder="Postal address" />
+					  <input type="text" class="form-control" id="employerPostalAddress" placeholder="Postal address" />
 					</div>
 				  </div>
   
 				  <script type="text/javascript">
 				  function copyAddress() {
-					  document.getElementById("streetAddress").value = document.getElementById("postalAddress").value;
+					  document.getElementById("employerStreetAddress").value = document.getElementById("employerPostalAddress").value;
 				  }
 				  </script>
             
@@ -31,7 +31,7 @@
 				  <div class="form-group">
 					<label for="streetAddress" class="col-lg-2 control-label">Street address*</label>
 					<div class="col-lg-10">
-					  <input type="text" class="form-control" name="streetAddress" id="streetAddress" placeholder="Street address" />
+					  <input type="text" class="form-control" name="streetAddress" id="employerStreetAddress" placeholder="Street address" />
 					</div>
 				  </div>
 				  
@@ -43,7 +43,7 @@
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-      var placeSearch, postalAddress, streetAddress;
+      var placeSearch, postalAddress, traineePostalAddress, streetAddress;
       var componentForm = {
         street_number: 'short_name',
         route: 'long_name',
@@ -57,11 +57,17 @@
         // Create the postalAddress object, restricting the search to geographical
         // location types.
         postalAddress = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('postalAddress')),
+            /** @type {!HTMLInputElement} */(document.getElementById('employerPostalAddress')),
             {types: ['geocode'], componentRestrictions: {country: "nz"}});
 		streetAddress = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('streetAddress')),
+            /** @type {!HTMLInputElement} */(document.getElementById('employerStreetAddress')),
             {types: ['geocode'], componentRestrictions: {country: "nz"}});
+          
+          traineePostalAddress = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('postalAddress')),
+            {types: ['geocode'], componentRestrictions: {country: "nz"}});
+          
+          traineePostalAddress.addListener('place_changed', fillInAddress);
       }
 
     </script>

@@ -1,58 +1,68 @@
-var array = ["streetNum", "streetName", "city", "region", "postCode", "country", "workPhone", "homePhone", "mobile", "email", "schoolCountry", "secondarySchool", "lastSchoolYear", "language", "secondaryQual", "HighestTertiaryQual", "qualificationLevel", "tertiaryYear", "previousEmployment", "companyName",  "tradingAs", "postalAddress",  "streetAddress", "mainContact", "contactDDI", "contactMobile", "contactEmail", "ethnicities", "iwi", "title", "traineeFirstName", "traineeMiddleName", "traineeLastName", "traineeGender", "traineeDOB", "passportNumber", "passportExpiry", "birthCertificate", "idMethod", "previousEmployment", "completedAssessment", "typeOfAssessment", "assessmentProvider", "learningDifficulty", "learningDifficultyDescription"];
+var array = ["salutation", "traineeFirstName", "traineeMiddleName", "traineeLastName", "traineePreferredName", "traineePreviousName", "traineePreviousNameDoc", "traineeGender", "generalDetailsDate", "traineeNSN", "traineeMOEEN", "postalAddress", "street_number", "route", "locality", "administrative_area_level_1", "postal_code", "country", "workPhone", "homePhone", "mobilePhone", "email", "ethnicity1", "ethnicity2", "ethnicity3", "iwi1", "iwi2", "iwi3", "schoolCountry", "secondarySchool", "lastSchoolYear", "language", "HighestSecondryQual", "HighestTertiaryQual", "qualificationLevel", "tertiaryYear", "priorActivity", "previousEmployment", "completedAssessment", "typeOfAssessment", "assessmentProvider", "learningDifficulty", "learningDifficultyDescription", "companyName", "tradingAs", "employerPostalAddress", "employerStreetAddress", "mainContact", "contactDDI", "contactMobile", "contactEmail", "passportNumber", "passportExpiry", "birthCertificate", "verificationDocumentA", "verificationDocumentB", "verificationDocumentC"];
 
-function onLoad(){
-    if(!validateLoggedIn()) return;
-    else{
-        
-    }
+function load(){
+    validateLoggedIn();
+    var params = JSON.stringify({type: "load", uid: localStorage.getItem("email"),});
+    submitTrainingRequest(
+        '../application/views/Forms/Training Agreement/Server/Server.php/', // URL for the PHP file
+        params,   //json arguments
+        trainingLoaded,  // handle successful request
+        trainingError    // handle error
+    );
+    document.getElementById("name").innerHTML = localStorage.getItem("name");
+    if(localStorage.getItem("logo") != undefined) document.getElementById("logo").src = "../application/views/Forms/Training Agreement/assets/logos/" + localStorage.getItem("logo");
+    else document.getElementById("logo").src = "../application/views/Forms/Training Agreement/assets/logos/skillsLogo.png";
 }
 
 /*
 Nothing in the database, onwards!
 */
-function nothingToGet(responseText){
+function trainingError(response){
+    alert(response);
     return;
 }
 
 /*
 information saved to database has been retrieved.
 */
-function gotStuff(responseText){
-    var dataSplit = responseText.split("&");
+function trainingLoaded(response){
+    var json = JSON.parse(response);
+    //no data in the database
+    if(!json["data"]) return;
     
-    for(var i = 0; i < array.length; i++){
-        if(dataSplit[i] != "null"){
+    //data retrieved
+    var dataSplit = json["data"].split("&");
+    
+    for(var i = 0; i < array.length; i++){  
+        if(dataSplit[i] != ""){
             //special cases (ie not just setting the value)
-            //ethnicity (27) and iwi (28) are both strings seperated by commas
-            if(i == 27){
-                var split = dataSplit[i].split(",");
-                for(var j = 0; j < split.length; j++){
-                    //if they selected other, the string saved is: 'other|' + value from otherTextBox
-                    if(split[j].indexOf("other") != -1){
-                        var otherSplit = split[j].split("|");
-                        document.getElementById("other").checked = true;
-                        document.getElementById("otherTextBox").value = otherSplit[1]; 
-                    }
-                    else{
-                        document.getElementById(split[j]).checked = true;
-                    }
-                }
+            if(array[i].includes("ethnicity")){
+                if(document.getElementById(dataSplit[i]) == undefined){
+                    document.getElementById("otherTextBox").value = dataSplit[i];
+                    document.getElementById("Other").checked = true;
+                } 
+                else document.getElementById(dataSplit[i]).checked = true;
+                continue;
             }
-            //iwi1, iwi2, iwi3|dontKnow|dontIdentify
-            if(i == 28){
-                var split = dataSplit[i].split("|");
-                document.getElementById("iwi").value = split[0];
-                if(split[1] == "true")document.getElementById("dontKnow").checked = true;
-                if(split[2] == "true")document.getElementById("dontIdentify").checked = "true";
+            if(array[i].includes("iwi")){
+                if(dataSplit[i] != ""){
+                    document.getElementById("iwi").value = document.getElementById("iwi").value + dataSplit[i] + ",";
+                }
+                continue;
+            }
+            if(array[i].includes("verification")){
+                if(dataSplit[i] != "")document.getElementById("verificationDocumentUploaded").innerHTML = "<b>Note:</b> Your previously uploaded documents have been saved, so you do not need to upload them again.";
             }
             else{
                 document.getElementById(array[i]).value = dataSplit[i];
             }
         }
     }
+    //remove trailing comma from the iwi text box
+    document.getElementById("iwi").value = document.getElementById("iwi").value.substring(0, document.getElementById("iwi").value.length-2);
 }
 
-function getRequest(url, success, error) {
+function submitTrainingRequest(url, params, success, error) {
     var req = false;
     try{
         // most browsers
@@ -76,10 +86,10 @@ function getRequest(url, success, error) {
     req.onreadystatechange = function(){
         if(req.readyState == 4) {
             return req.status === 200 ? 
-                success(req.responseText) : error(req.status);
+                success(req.response) : error(req.status);
         }
     }
-    req.open("GET", url, true);
-    req.send();
+    req.open("POST", url, true);
+    req.send(params);
     return req;
 }

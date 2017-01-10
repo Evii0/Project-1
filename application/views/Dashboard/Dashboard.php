@@ -1,23 +1,24 @@
 <html>
     <head>
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- MetisMenu CSS -->
-        <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+        <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+        <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 
         <!-- Morris Charts CSS -->
-        <link href="vendor/morrisjs/morris.css" rel="stylesheet">
+        <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
 
         <!-- Custom Fonts -->
-        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         
-        <link href="application/views/Dashboard/Dashboard.css" rel="stylesheet" type="text/css">
-        <script src="application/views/Dashboard/Dashboard.js"></script>
-        <script src="application/views/Constants/Javascript/ValidateLogin.js"></script>
-        <title>Login</title>
+        <link href="../application/views/Dashboard/Dashboard.css" rel="stylesheet" type="text/css">
+        <script src="../application/views/Dashboard/Dashboard.js"></script>
+        <script src="../application/views/Constants/Javascript/ValidateLogin.js"></script>
+        <script src="../application/views/Constants/Javascript/Logout.js"></script>
+        <title>Dashboard</title>
         
     </head>
     
@@ -31,14 +32,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div id="logoContainer">
-                    <img src="application/views/Forms/Training Agreement/assets/logos/skillsLogo.png" id="logo">
+                    <img src="" id="logo">
                 </div>
             </div>
-            <ul class="nav navbar-top-links navbar-right">  
-                <p id="name">Peter Alexander</p>
+            <ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
@@ -54,6 +54,7 @@
                 </li>
                 <!-- /.dropdown -->
             </ul>
+            <div id="name"></div>
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
@@ -82,14 +83,6 @@
                     <tr>
                         <th class="first">Forms</th>
                         <th class="second">Completed</th>
-                    </tr>
-                    <tr>
-                        <td class="first"><a href="">Training Agreement</a></td>
-                        <td class="second">Yes</td>
-                    </tr>
-                    <tr>
-                        <td class="first"><a href="">Real Estate Enrolment</a></td>
-                        <td class="second">No</td>
                     </tr>
                 </table>
             </div>

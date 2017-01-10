@@ -1,4 +1,52 @@
 <?php
+$secondaryQual = array(
+    "No formal secondary school qualification",
+    "14 or more credits at any level",
+    "NCEA Level 1 or School Certificate",
+    "NCEA Level 2 or 6th Form Certificate",
+    "NCEA Level 3 or Bursary or Scholarship",
+    "University Entrance",
+    "Overseas qualification (includes International Baccalaureate &amp; Cambridge Exams)",
+    "Other"
+);
+    
+$tertiaryQual = array(
+    "No Qualification",
+    "Bachelor Degree, Level 7 Graduate Diploma/Certificate, Level 7 Diploma/ Certificate",
+    "Doctorate Degree",
+    "Level 1 Certificate",
+    "Level 2 Certificate",
+    "Level 3 Certificate",
+    "Level 4 Certificate",
+    "Level 5 Diploma/Certificate",
+    "Level 6 Graduate Certificate",
+    "Masters Degree",
+    "Postgraduate Diploma/Certificate, Bachelor Honours"
+);
+
+$level = array(
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+);
+
+$priorActivity = array(
+    "Secondary school student",
+    "Private Training Student",
+    "Non-employed or Beneficiary",
+    "Wage or Salary Worker",
+    "Self-Employed",
+    "University Student",
+    "Polytechnic Student",
+    "College of Education Student",
+    "House-person or Retired",
+    "Overseas",
+    "Wananga Student"
+);
+
 $ethnicitys = array(
 	"NZ European/Pakeha",
 	"African",

@@ -72,15 +72,15 @@ array_unshift($schools, "");
                             <div class="form-group">
                                 <label for="HighestSecondryQual" class="col-lg-2 control-label">Highest secondary qualification</label>
                                 <div class="col-lg-10">
-                                    <select class="form-control" name="HighestSecondryQual">
-                                        <option>No formal secondary school qualification</option>
-                                        <option>14 or more credits at any level</option>
-                                        <option>NCEA Level 1 or School Certificate</option>
-                                        <option>NCEA Level 2 or 6th Form Certificate</option>
-                                        <option>NCEA Level 3 or Bursary or Scholarship</option>
-                                        <option>University Entrance</option>
-                                        <option>Overseas qualification (includes International Baccalaureate &amp; Cambridge Exams)</option>
-                                        <option>Other</option>
+                                    <select class="form-control" id="HighestSecondryQual">
+                                        <?php
+                                            $arrayLength = count($secondaryQual);
+                                            for($x = 1; $x < $arrayLength; $x++) {
+                                                print '<option value="'.$secondaryQual[$x].'" ';
+                                                //if($schoolCountry == $schoolCountries[$x]) print 'selected="selected"';
+                                                print '>'.$secondaryQual[$x].'</option>';
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -90,17 +90,14 @@ array_unshift($schools, "");
                                 <label for="HighestTertiaryQual" class="col-lg-2 control-label">Highest tertiary qualification</label>
                                 <div class="col-lg-10">
                                     <select class="form-control" name="HighestTertiaryQual" id="HighestTertiaryQual" onChange="HighestTertiaryQualChanged()">
-                                        <option>No Qualification</option>
-                                        <option>Bachelor Degree, Level 7 Graduate Diploma/Certificate, Level 7 Diploma/ Certificate</option>
-                                        <option>Doctorate Degree</option>
-                                        <option>Level 1 Certificate</option>
-                                        <option>Level 2 Certificate</option>
-                                        <option>Level 3 Certificate</option>
-                                        <option>Level 4 Certificate</option>
-                                        <option>Level 5 Diploma/Certificate</option>
-                                        <option>Level 6 Graduate Certificate</option>
-                                        <option>Masters Degree</option>
-                                        <option>Postgraduate Diploma/Certificate, Bachelor Honours</option>
+                                        <?php
+                                            $arrayLength = count($tertiaryQual);
+                                            for($x = 1; $x < $arrayLength; $x++) {
+                                                print '<option value="'.$tertiaryQual[$x].'" ';
+                                                //if($schoolCountry == $schoolCountries[$x]) print 'selected="selected"';
+                                                print '>'.$tertiaryQual[$x].'</option>';
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -108,12 +105,14 @@ array_unshift($schools, "");
                                 <label for="qualificationLevel" class="col-lg-2 control-label">Qualification level</label>
                                 <div class="col-lg-10">
                                     <select class="form-control" name="qualificationLevel" id="qualificationLevel" disabled = "true">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
+                                        <?php
+                                            $arrayLength = count($level);
+                                            for($x = 1; $x < $arrayLength; $x++) {
+                                                print '<option value="'.$level[$x].'" ';
+                                                //if($schoolCountry == $schoolCountries[$x]) print 'selected="selected"';
+                                                print '>'.$level[$x].'</option>';
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -141,18 +140,15 @@ array_unshift($schools, "");
                                 <p class="help-block col-lg-offset-2 col-lg-10">Please select your occupation or activity before you started with your employer</p>
                                 <label for="previousEmployment" class="col-lg-2 control-label">Prior activity</label>
                                 <div class="col-lg-10">
-                                    <select class="form-control" name="previousEmployment" id="previousEmployment">
-                                        <option>Secondary school student</option>
-                                        <option>Private Training Student</option>
-                                        <option>Non-employed or Beneficiary</option>
-                                        <option>Wage or Salary Worker</option>
-                                        <option>Self-Employed</option>
-                                        <option>University Student</option>
-                                        <option>Polytechnic Student</option>
-                                        <option>College of Education Student</option>
-                                        <option>House-person or Retired</option>
-                                        <option>Overseas</option>
-                                        <option>Wananga Student</option>
+                                    <select class="form-control" name="previousEmployment" id="priorActivity">
+                                        <?php
+                                            $arrayLength = count($priorActivity);
+                                            for($x = 1; $x < $arrayLength; $x++) {
+                                                print '<option value="'.$priorActivity[$x].'" ';
+                                                //if($schoolCountry == $schoolCountries[$x]) print 'selected="selected"';
+                                                print '>'.$priorActivity[$x].'</option>';
+                                            }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
